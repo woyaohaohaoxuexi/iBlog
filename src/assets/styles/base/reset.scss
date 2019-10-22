@@ -1,0 +1,11 @@
+html, body {
+  height: 100%;
+}
+div, p {
+  box-sizing: border-box;
+}
+// 取消默认边框
+p {
+  margin: 0;
+  padding: 0;
+}
