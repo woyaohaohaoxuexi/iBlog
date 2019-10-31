@@ -1,5 +1,5 @@
 <template>
-  <div class='header ley-item-fixed'>
+  <div class='header ley-item-fixed ley-bottom-shadow'>
     <p>博客后台管理</p>
   </div>
 </template>
@@ -17,8 +17,9 @@ export default {
 
 <style scoped lang="scss">
 .header {
-  height: 46px;
-  padding: 0 20px;
-  background-color: $nav-bg;
+  height: 60px;
+  padding: 0 40px;
+  line-height: 60px;
+  background-color: #fff;
 }
 </style>

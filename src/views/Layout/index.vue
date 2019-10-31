@@ -1,6 +1,6 @@
 <template>
   <div class='layout ley-column'>
-    <page-header></page-header>
+    <page-header class="page-header"></page-header>
     <div class="main-container ley-item-vary ley-flex">
       <!--  左侧菜单  -->
       <side-bar :menu-data="menuData" class="ley-item-fixed ley-shadow"></side-bar>
@@ -37,17 +37,23 @@ export default {
     },
     handleData(arr, parentPath = '') {
       let tempArr = []
-      tempArr = arr.map(item => {
-        const childrenData = item.children
-        let itemData = {
-          name: item.meta.title,
-          path: parentPath ? `${parentPath}/${item.path}` : item.path,
-          icon: item.meta.icon || ''
+      arr.forEach(item => {
+        if (!item.hidden) {
+          // showSubMenu: 是否显示子菜单；
+          // activeMenu: 菜单选中匹配的路径
+          const { title, icon = "", showSubMenu = true, activeMenu = null } = item.meta
+          const childrenList = item.children
+          let itemData = {
+            name: title,
+            path: parentPath ? `${parentPath}/${item.path}` : item.path,
+            icon: icon,
+            activeMenu
+          }
+          if (showSubMenu && childrenList && childrenList.length) {
+            itemData.children = this.handleData(childrenList, item.path)
+          }
+          tempArr.push(itemData)
         }
-        if (childrenData && childrenData.length) {
-          itemData.children = this.handleData(childrenData, item.path)
-        }
-        return itemData
       })
       return tempArr
     }
@@ -58,10 +64,13 @@ export default {
 <style scoped lang="scss">
 .layout {
   height: 100%;
+  background-color: $bColor-body;
+  .page-header {
+    margin-bottom: $main-padding;
+  }
 }
 .main-container {
-  padding: $main-padding;
-  background-color: $bColor-body;
+  padding: 0 $main-padding $main-padding;
   .content {
     margin-left: $main-padding;
     background-color: #fff;

@@ -1,15 +1,22 @@
 <template>
-  <div class='article'>
-
+  <div class='article app-content'>
+    <mavon-editor
+      v-model="articleValue">
+    </mavon-editor>
   </div>
 </template>
 
 <script>
+import { mavonEditor } from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 export default {
-  name: '',
+  name: 'CreateArticle',
+  components: {
+    mavonEditor
+  },
   data() {
     return {
-
+      articleValue: ''
     }
   },
 }

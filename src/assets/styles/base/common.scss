@@ -1,4 +1,13 @@
+/***
+ * 常用的一些样式
+ ***/
 @import '_color';
+
+// 内容区样式
+.app-content {
+  padding: 20px 30px;
+}
+
 // 四边阴影
 .ley-shadow {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.14);

@@ -4,13 +4,15 @@
       <!--  有子菜单  -->
       <div
         v-if="item.children && item.children.length"
-        :key="item.path">
+        :key="item.path"
+        class="parent-menu">
         <div class="ley-flex ley-align-center item-menu" @click="extendMenu(index)">
           <svg-icon :icon-class="item.icon"></svg-icon>
           <p class="">{{ item.name }}</p>
           <svg-icon 
             icon-class="down-arrow"
-            class-name="arrow-icon">
+            class-name="arrow-icon"
+            :class="{'extend-arrow': item.extend}">
           </svg-icon>
         </div>
         <div v-if="item.extend" class="children-menu-content" :class="{'extend-menu': item.extend}">
@@ -19,21 +21,21 @@
       </div>
 
       <!--  没有子菜单  -->
-      <div 
+      <router-link 
         v-else
         :key="item.path"
-        class="item-menu ley-align-center sigle-menu">
-        <router-link :to="item.path" class="ley-a menu-link">
-          <svg-icon :icon-class="item.icon"></svg-icon>
-          {{ item.name }}
-        </router-link>
-      </div>
+        :to="item.path" 
+        class="ley-a item-menu ley-align-center single-menu"
+        :class="{'active-menu': item.activeMenu ? item.activeMenu === currentRoute : item.path === currentRoute}">
+        <svg-icon :icon-class="item.icon"></svg-icon>
+        {{ item.name }}
+      </router-link>
     </template>
   </div>
 </template>
 
 <script>
-import '@/assets/icons/svg/write.svg'
+// import '@/assets/icons/svg/write.svg'
 export default {
   name: 'SideMenu',
   props: {
@@ -56,6 +58,12 @@ export default {
       menuData: []
     }
   },
+  computed: {
+    currentRoute() {
+      const routeData = this.$route
+      return routeData.path
+    }
+  },
   methods: {
     initMenu(data) {
       let tempArr = []
@@ -76,43 +84,66 @@ export default {
 
 <style scoped lang="scss">
 .side-menu {
+  .item-menu {
+    height: 56px;
+    cursor: pointer;
+  }
   .parent-menu {
     position: relative;
-    .down-arrow {
+    .arrow-icon {
+      width: 20px;
+      height: 20px;
       position: absolute;
       right: 15px;
       transition: transform 0.2s;
     }
-    .arrow-icon {
-      width: 20px;
-      height: 20px;
+    .extend-arrow {
+      transform: rotate(180deg);
+      transition: transform 0.2s;
     }
-    // .extend-menu {
-    //   transform: rotate(180deg);
-    //   transition: transform 0.2s;
-    // }
+    .item-menu {
+      padding-left: 20px;
+    }
   }
-}
-.item-menu {
-  height: 50px;
-  cursor: pointer;
-  &.sigle-menu {
+  .children-menu-content {
+    background-color: $sub-menu-bg;
+    .item-menu {
+      height: 50px;
+      padding-left: 40px;
+      &.single-menu {
+        &:hover {
+          color: $orange;
+          background-color: $sub-menu-bg;
+        }
+      }
+    }
+  }
+  .svg-icon {
+    margin-right: 10px;
+  }
+  &>.single-menu {
+    padding-left: 20px;
     &:hover {
       background-color: $orange-light;
       color: $orange;
     }
+  } 
+  .active-menu {
+    background-color: $orange-light;
+    color: $orange;
   }
 }
-.children-menu-content {
-  display: none;
-  background-color: $sub-menu-bg;
-  transition: all 0.5s;
-  &.extend-menu {
-    display: block;
-    transition: all 0.5s;
-  }
-}
-.menu-icon {
-  margin-right: 12px;
-}
+
+// .children-menu-content {
+//   display: none;
+//   
+//   transition: all 0.5s;
+//   &.extend-menu {
+//     display: block;
+//     transition: all 0.5s;
+//   }
+// }
+// .menu-icon {
+//   margin-right: 12px;
+// }
 </style>
