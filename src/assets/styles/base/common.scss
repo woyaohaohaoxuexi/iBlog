@@ -32,3 +32,33 @@
     color: $orange;
   }
 }
+
+// 按钮
+.ley-btn {
+  padding: 0 15px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+// markdown 相关样式
+.manage-content {
+  pre {
+    padding: 1em 1.4em;
+    line-height: 1.8em;
+    color: $code-color;
+    background: $pre-bclolr;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+  }
+  p {
+    line-height: 1.8em;
+    color: $p-color;
+  }
+}
+

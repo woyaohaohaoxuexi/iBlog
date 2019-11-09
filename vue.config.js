@@ -8,6 +8,7 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src'))
       .set('@views', resolve('src/views'))
+      .set('@api', resolve('src/api'))
       .set('$', resolve('node_modules'))
     
      // 取消 默认对 .svg 的解析规则 
@@ -32,6 +33,13 @@ module.exports = {
     loaderOptions: {
       scss: {
         prependData: `@import "~@/assets/styles/main.scss";`
+      }
+    }
+  },
+  devServer: {
+    proxy: {
+      '/ley/': {
+        target: 'http://localhost:8090/'
       }
     }
   }
