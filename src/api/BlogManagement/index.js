@@ -13,7 +13,7 @@ export const uploadManage = (data) => {
 
 export const addManage = (data) => {
   return request({
-    url: `${BASE_URL}/add/management`,
+    url: `${BASE_URL}/add/article`,
     method: 'post',
     data,
     headers: {
@@ -24,7 +24,15 @@ export const addManage = (data) => {
 
 export const getManage = (data) => {
   return request({
-    url: `${BASE_URL}/get/management`,
+    url: `${BASE_URL}/get/article-list`,
     method: 'get'
+  })
+}
+
+export const getArticleDetail = (params) => {
+  return request({
+    url: `${BASE_URL}/get/article-detail`,
+    method: 'get',
+    params
   })
 }

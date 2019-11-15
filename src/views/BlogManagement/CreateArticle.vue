@@ -39,10 +39,11 @@ import { mavonEditor } from 'mavon-editor'
 // marked
 import marked from 'marked'
 
-import highlight from 'highlight.js/lib/highlight'
-import 'highlight.js/styles/github.css'
-import 'mavon-editor/dist/css/index.css'
-import { uploadManage, addManage, getManage } from '@api/BlogManagement/index'
+// import highlight from 'highlight.js/lib/highlight'
+const highlight = require('highlight.js')
+
+// import 'mavon-editor/dist/css/index.css'
+import { uploadManage, addManage, getManage, getArticleDetail } from '@api/BlogManagement/index'
 // markdown-it
 var MarkdownIt = require('markdown-it'),
     md = new MarkdownIt({
@@ -63,6 +64,7 @@ export default {
       title: '',
       introduction: '',
       file: '',
+      articleId: '',
       manageData: {
         management: ''
       },
@@ -71,34 +73,42 @@ export default {
   },
   computed: {
     manageDom() {
-      const manageStr = this.manageData.management
+      const manageStr = this.manageData.article
       let dom = ''
       if (manageStr) {
-        // dom = marked(manageStr, {
-        //   pedantic: false,
-        //   gfm: true,
-        //   breaks: false,
-        //   sanitize: false,
-        //   smartLists: true,
-        //   smartypants: false,
-        //   xhtml: false,
-        //   highlight: (code) => {
-        //     return highlight.highlightAuto(code).value
-        //   }
-        // })
-        dom = md.render(manageStr)
+        dom = marked(manageStr, {
+          pedantic: false,
+          gfm: true,
+          breaks: false,
+          sanitize: false,
+          smartLists: true,
+          smartypants: false,
+          xhtml: false,
+          highlight: (code) => {
+            return highlight.highlightAuto(code).value
+          }
+        })
+        // dom = md.render(manageStr)
       } else {
         dom = ''
       }
       // console.log('生成的 DOm 是：', dom)
       return dom
+      // return highlight.highlightBlock(dom)
     }
   },
   created() {
     getManage()
       .then(res => {
-        console.log('获取文章：', res)
-        this.manageData = res.data.data[2]
+        const articleId = res.data.data.list.pop().id
+        getArticleDetail({ articleId })
+          .then(res => {
+            console.log('获取文章详情：', res)
+            this.manageData = res.data.data
+          })
+          .catch(error => {
+            console.log('获取文章详情报错：', error)
+          })
       })
       .catch(error => {
         console.log('获取文章失败：', error)

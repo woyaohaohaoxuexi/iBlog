@@ -37,6 +37,7 @@ module.exports = {
     }
   },
   devServer: {
+    port: 8899,
     proxy: {
       '/ley/': {
         target: 'http://localhost:8090/'
