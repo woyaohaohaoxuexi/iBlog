@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://47.106.90.160:8090/ley'
+export const BASE_URL = 'http://www.onepiecening.com/ley'

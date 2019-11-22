@@ -151,7 +151,7 @@ export default {
       let formData = new FormData()
       formData.append('title', title),
       formData.append('introduction', introduction)
-      formData.append('management', file)
+      formData.append('article', file)
       addManage(formData)
         .then(res => {
           console.log('添加成功：', res)
