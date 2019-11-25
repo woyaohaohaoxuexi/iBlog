@@ -1,8 +1,8 @@
 import request from '../request'
-import { BASE_URL } from '../baseUrl'
+// import { BASE_URL } from '../baseUrl'
 export const uploadManage = (data) => {
   return request({
-    url: `${BASE_URL}/upload/management`,
+    url: `/upload/management`,
     method: 'post',
     data,
     headers: {
@@ -13,7 +13,7 @@ export const uploadManage = (data) => {
 
 export const addManage = (data) => {
   return request({
-    url: `${BASE_URL}/add/article`,
+    url: `/add/article`,
     method: 'post',
     data,
     headers: {
@@ -24,14 +24,14 @@ export const addManage = (data) => {
 
 export const getManage = (data) => {
   return request({
-    url: `${BASE_URL}/get/article-list`,
+    url: `/get/article-list`,
     method: 'get'
   })
 }
 
 export const getArticleDetail = (params) => {
   return request({
-    url: `${BASE_URL}/get/article-detail`,
+    url: `/get/article-detail`,
     method: 'get',
     params
   })
