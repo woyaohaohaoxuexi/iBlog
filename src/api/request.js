@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { BASE_URL } from './baseUrl'
-// const baseURL = 'http://localhost:8090'  // "http://10.54.26.43:8090"
-axios.defaults.baseURL = BASE_URL
+import { BASE_URL, REQUEST_OK } from './config'
+
+axios.defaults.baseURL = `${BASE_URL}/ley`
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.timeout = 5000
 // 几种常见的 Content-Type 
@@ -17,7 +17,12 @@ axios.interceptors.request.use((config) => {
 
 // 响应拦截
 axios.interceptors.response.use((response) => {
-  return response
+  const resData = response.data
+  if (resData.code === REQUEST_OK) {
+    return resData
+  } else {
+    return Promise.reject(resData.message)
+  }
 }, (error) => {
   return Promise.reject(error)
 })

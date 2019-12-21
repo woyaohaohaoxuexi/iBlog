@@ -1,3 +1,6 @@
-@mixin mr($num) {
+@mixin mr($num: 15px) {
   margin-right: $num;
+}
+@mixin mb($num: 15px) {
+  margin-bottom: $num;
 }

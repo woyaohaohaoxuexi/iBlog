@@ -2,27 +2,49 @@ import Layout from '@views/Layout/index'
 const routes = [
   {
     path: '/',
-    redirect: '/create-article',
+    redirect: '/dashboard',
     hidden: true
   },
   {
-    path: '/create-article',
-    redirect: '/create-article/index',
+    path: '/dashboard',
+    redirect: '/dashboard/index',
     component: Layout,
     meta: {
-      title: '博客管理',
-      icon: 'blog-management',
-      showSubMenu:  true  // 是否显示子菜单 （ 默认为 true ）
+      title: '工作台',
+      icon: 'blog-management'
     },
     children: [
       {
         path: 'index',
-        component: () => import('@views/BlogManagement/CreateArticle'),
+        component: () => import('@views/Dashboard/index'),
         meta: {
-          title: '新建文章',
-          icon: 'write'
+          title: '仪表盘'
+        }
+      },
+      {
+        path: 'create-article',
+        component: () => import('@views/Dashboard/CreateArticle'),
+        meta: {
+          title: '新建文章'
         }
       }
+    ]
+  },
+  {
+    path: '/article-management',
+    redirect: '/article-management/index',
+    component: Layout,
+    meta: {
+      title: '文章管理',
+      icon: 'blog-management',
+      showSubMenu: false,
+      activeMenu: '/article-management/index'
+    },
+    children: [{
+      path: 'index',
+      component: () => import('@views/ArticleManagement/index')
+    }
+
     ]
   },
   {

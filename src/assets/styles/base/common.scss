@@ -1,11 +1,17 @@
 /***
  * 常用的一些样式
  ***/
-@import '_color';
+@import '_variable';
 
-// 内容区样式
+// 内容区
 .app-content {
   padding: 20px 30px;
+}
+
+// title 提示
+.ley-title {
+  font-size: 16px;
+  font-weight: 600;
 }
 
 // 四边阴影
@@ -33,6 +39,38 @@
   }
 }
 
+// 边框
+.ley-border {
+  border: $border;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+// input 框
+.ley-input, .ley-button {
+  @extend .ley-border;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+.ley-textarea {
+  @extend .ley-border;
+  padding: 10px;
+  max-width: 400px;
+  max-height: 200px;
+}
+.ley-mini-input {
+  @extend .ley-input;
+  width: 220px;
+}
+
 // 按钮
 .ley-btn {
   padding: 0 15px;
@@ -41,6 +79,7 @@
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
+  cursor: pointer;
 }
 
 // markdown 相关样式
