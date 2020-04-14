@@ -1,6 +1,6 @@
 <template>
-  <div class=''>
-    <h3>仪表盘</h3>
+  <div class='app-content'>
+    <p class="ley-title ley-item-fixed">仪表盘</p>
     <div> 
       <div v-for="item in dashboardData" :key="item.label">
         <div></div>

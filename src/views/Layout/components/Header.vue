@@ -20,6 +20,7 @@ export default {
   height: 60px;
   padding: 0 40px;
   line-height: 60px;
+  font-size: 20px;
   background-color: #fff;
 }
 </style>

@@ -43,9 +43,7 @@ const routes = [
     children: [{
       path: 'index',
       component: () => import('@views/ArticleManagement/index')
-    }
-
-    ]
+    }]
   },
   {
     path: '/message-management',

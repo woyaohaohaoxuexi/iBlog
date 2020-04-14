@@ -1,5 +1,6 @@
 <template>
   <div class='article app-content'>
+    <p class="ley-title ley-item-fixed">新建文章</p>
     <div class="check-content">
       <div class="ley-flex ley-align-center item-form">
         <label for="" class="left-text">文章标题：</label>
@@ -11,7 +12,6 @@
           v-model="introduction"
           class="ley-textarea"
           name=""
-          id=""
           cols="30"
           rows="10">
         </textarea>
