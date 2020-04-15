@@ -18,7 +18,7 @@
       </div>
       <div class="ley-flex">
         <span class="left-text">新建方式：</span>
-        <div class="ley-flex">
+        <!-- <div class="ley-flex">
           <div class="item-radio">
             <input v-model="createType" type="radio" name="createType" value="upload">
             <label for="">上传</label>
@@ -26,6 +26,16 @@
           <div>
             <input v-model="createType" type="radio" name="createType" value="edit">
             <label for="">页面编辑</label>
+          </div>
+        </div> -->
+      </div>
+      <div>
+        <div class="ley-flex">
+          <div class="item-radio">
+            <ley-radio v-model="createType" label="upload">上传</ley-radio>
+          </div>
+          <div class="item-radio">
+            <ley-radio v-model="createType" label="edit">页面编辑</ley-radio>
           </div>
         </div>
       </div>
@@ -102,6 +112,12 @@ export default {
         dom = ''
       }
       return dom
+    }
+  },
+  watch: {
+    createType: function (n) {
+      console.log('emit:', n);
+      
     }
   },
   methods: {
