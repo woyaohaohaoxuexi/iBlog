@@ -18,18 +18,6 @@
       </div>
       <div class="ley-flex">
         <span class="left-text">新建方式：</span>
-        <!-- <div class="ley-flex">
-          <div class="item-radio">
-            <input v-model="createType" type="radio" name="createType" value="upload">
-            <label for="">上传</label>
-          </div>
-          <div>
-            <input v-model="createType" type="radio" name="createType" value="edit">
-            <label for="">页面编辑</label>
-          </div>
-        </div> -->
-      </div>
-      <div>
         <div class="ley-flex">
           <div class="item-radio">
             <ley-radio v-model="createType" label="upload">上传</ley-radio>
@@ -41,13 +29,14 @@
       </div>
     </div>
     <div v-if="createType === 'upload'" class="ley-flex ley-align-center item-form">
-      <label for="uploadInput" class="upload-label">上传文件</label>
-      <input
-        id="uploadInput" 
-        class="upload-input" 
-        type="file" 
-        multiple="false"
-        @change="upload">
+      <label class="upload-label">上传文件
+        <input 
+          class="upload-input"
+          type="file" 
+          multiple="false"
+          @change="upload">
+      </label>
+        
     </div>
     <mavon-editor
       ref="mavonEditor"

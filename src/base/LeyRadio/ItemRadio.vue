@@ -1,9 +1,10 @@
 <template>
-  <label>
+  <label class="ley-label">
     <input 
       :value="label" 
       type="radio"
       :checked="isChecked"
+      :class="['ley-radio', isChecked ? 'ley-radio-checked' : '']"
       @change="inputChange" 
       @input="onRadioInput"
       @click="onRadioClick">
