@@ -15,7 +15,6 @@ requireComponent.keys().forEach(fileName => {
   // 示例： 文件 ./Skeleton/index.vue --> Skeleton
   const tempName = fileName.match(/\/(\w+)\//i)[1]
   const componentName = capitalizeFirstLetter(tempName)
-  console.log('注册的全局组件：', componentName);
   
   // Vue组件全局注册方法
   Vue.component(componentName, componentConfig.default || componentConfig)

@@ -52,7 +52,7 @@
 }
 
 // input 框
-.ley-input, .ley-button {
+.ley-input {
   @extend .ley-border;
   height: 32px;
   padding: 0 10px;
@@ -91,6 +91,7 @@
   border: $border;
   border-radius: 50%;
   outline: none;
+  transition: all .2s;
   cursor: pointer;
   &:hover {
     border-color: $orange;
@@ -119,13 +120,25 @@
 
 // 按钮
 .ley-btn {
+  @extend.ley-border;
   padding: 0 15px;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
+  line-height: 32px;
+  background-color: #fff;
+  transition: .15s;
   cursor: pointer;
+  &:hover {
+    border-color: $orange;
+    color: $orange;
+  }
+  &.active {
+    border-color: $orange;
+    background-color: $orange;
+    color: #fff;
+    &:hover {
+      // opacity: 0.65;
+      background-color: $orange-hover;
+    }
+  }
 }
 
 // markdown 相关样式

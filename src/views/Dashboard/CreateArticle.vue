@@ -29,14 +29,13 @@
       </div>
     </div>
     <div v-if="createType === 'upload'" class="ley-flex ley-align-center item-form">
-      <label class="upload-label">上传文件
+      <label class="ley-btn">上传文件
         <input 
           class="upload-input"
           type="file" 
           multiple="false"
           @change="upload">
       </label>
-        
     </div>
     <mavon-editor
       ref="mavonEditor"
@@ -46,8 +45,8 @@
       @imgAdd="onAddImg">
     </mavon-editor>
     <div class="ley-flex ley-align-center item-form btn-content">
-      <button class="ley-btn ley-button left-btn" @click="save">保存</button>
-      <button class="ley-btn ley-button">取消</button>
+      <button class="ley-btn left-btn active" @click="save">保存</button>
+      <button class="ley-btn">取消</button>
     </div>
   </div>
 </template>

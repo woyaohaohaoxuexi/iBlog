@@ -66,7 +66,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.label-text {
 
-}
 </style>
