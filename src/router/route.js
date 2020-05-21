@@ -46,6 +46,23 @@ const routes = [
     }]
   },
   {
+    path: '/label-management',
+    redirect: '/label-management/index',
+    component: Layout,
+    meta: {
+      title: '标签管理',
+      icon: 'blog-management',
+      showSubMenu: false,
+      activeMenu: '/label-management/index'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@views/LabelManagement/index')
+      }
+    ]
+  },
+  {
     path: '/message-management',
     redirect: '/message-management/index',
     component: Layout,

@@ -57,7 +57,7 @@ import { mavonEditor } from 'mavon-editor'
 import marked from 'marked'
 import 'mavon-editor/dist/css/index.css'
 const highlight = require('highlight.js')
-
+import { str } from './test'
 import { BASE_URL } from '@api/config'
 export default {
   name: 'CreateArticle',
@@ -108,6 +108,12 @@ export default {
       
     }
   },
+  created() {
+    const aBoundary = 'WebKitFormBoundaryGc4qkdH8N2AxkJx1'
+    const reg1 = new RegExp(`^(-+${aBoundary})`)
+    console.log('正则：', reg1);
+    console.log('获取 boundary', str.match(reg1));
+  },
   methods: {
     ...mapActions('article', ['addArticle', 'uploadImg']),
     upload(event) {
@@ -149,6 +155,8 @@ export default {
     },
 
     save() {
+      console.log('保存');
+      
       const { title, introduction, createType } = this
       if (title && introduction) {
         let file = createType === 'upload' ? this.file : this.articleValue
