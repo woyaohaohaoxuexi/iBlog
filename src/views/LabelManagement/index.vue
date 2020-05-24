@@ -30,7 +30,7 @@
     methods: {
       ...mapActions('label', ['addLabel']),
       onAddLabel() {
-        this.addLabel({ name: 'CSS' })
+        this.addLabel({ name: this.labelName })
       }
     },
     components: {
