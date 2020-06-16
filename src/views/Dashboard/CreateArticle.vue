@@ -1,5 +1,5 @@
 <template>
-  <div class='article app-content'>
+  <div class='article app-container'>
     <div class="check-content">
       <div class="ley-flex ley-align-center item-form">
         <label for="" class="left-text">文章标题：</label>
@@ -38,6 +38,7 @@
         type="file" 
         multiple="false"
         @change="upload">
+      <div class="ley-btn">上传图片</div>
     </div>
     <mavon-editor
       ref="mavonEditor"

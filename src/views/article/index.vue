@@ -1,5 +1,5 @@
 <template>
-  <div class='app-content ley-column'>
+  <div class='app-container ley-column'>
     <p class="ley-title ley-item-fixed">文章管理</p>
     <div class="table-content ley-item-vary ley-flex">
       <table class="ley-table">

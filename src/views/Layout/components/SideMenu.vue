@@ -15,13 +15,13 @@
             :class="{'extend-arrow': item.extend}">
           </svg-icon>
         </div>
-        <div v-if="item.extend" class="children-menu-content" :class="{'extend-menu': item.extend}">
+        <div class="children-menu-content" :class="{'extend-menu': item.extend}">
           <side-menu :data="item.children"></side-menu>
         </div>
       </div>
 
       <!--  没有子菜单  -->
-      <router-link 
+      <router-link
         v-else
         :key="item.path"
         :to="item.path" 
@@ -106,7 +106,14 @@ export default {
     }
   }
   .children-menu-content {
+    max-height: 0;
+    overflow: hidden;
     background-color: $sub-menu-bg;
+    transition: max-height .3s ease;
+    &.extend-menu {
+      max-height: 1000px;
+      transition: max-height 2s ease;
+    }
     .item-menu {
       height: 50px;
       padding-left: 40px;

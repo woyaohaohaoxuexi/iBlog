@@ -2,7 +2,6 @@
   <div class='side-bar'>
     <div class="avatar">
       <div>
-        <!-- <img src="" alt=""> -->
         <p class="img-place"></p>
       </div>
       <p>后台管理</p>

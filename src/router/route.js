@@ -1,4 +1,4 @@
-import Layout from '@views/Layout/index'
+import Layout from '@views/layout/index'
 const routes = [
   {
     path: '/',
@@ -11,19 +11,19 @@ const routes = [
     component: Layout,
     meta: {
       title: '工作台',
-      icon: 'blog-management'
+      icon: 'dashboard'
     },
     children: [
       {
         path: 'index',
-        component: () => import('@views/Dashboard/index'),
+        component: () => import('@views/dashboard/index'),
         meta: {
           title: '仪表盘'
         }
       },
       {
         path: 'create-article',
-        component: () => import('@views/Dashboard/CreateArticle'),
+        component: () => import('@views/dashboard/CreateArticle'),
         meta: {
           title: '新建文章'
         }
@@ -36,34 +36,51 @@ const routes = [
     component: Layout,
     meta: {
       title: '文章管理',
-      icon: 'blog-management',
+      icon: 'article-management',
       showSubMenu: false,
       activeMenu: '/article-management/index'
-    },
-    children: [{
-      path: 'index',
-      component: () => import('@views/ArticleManagement/index')
-    }
-
-    ]
-  },
-  {
-    path: '/message-management',
-    redirect: '/message-management/index',
-    component: Layout,
-    meta: {
-      title: '留言管理',
-      icon: 'blog-management',
-      showSubMenu: false,
-      activeMenu: '/message-management/index'
     },
     children: [
       {
         path: 'index',
-        component: () => import('@views/MessageManagement/index')
+        component: () => import('@views/article/index')
       }
     ]
-    
+  },
+  {
+    path: '/label',
+    redirect: '/label/index',
+    component: Layout,
+    meta: {
+      title: '标签管理',
+      icon: 'article-label',
+      showSubMenu: false,
+      activeMenu: '/labe/index'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@views/label/index')
+      }
+    ]
   }
+  // {
+  //   path: '/message-management',
+  //   redirect: '/message-management/index',
+  //   component: Layout,
+  //   meta: {
+  //     title: '留言管理',
+  //     icon: 'comment',
+  //     showSubMenu: false,
+  //     activeMenu: '/message-management/index'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@views/MessageManagement/index')
+  //     }
+  //   ]
+    
+  // }
 ]
 export default routes

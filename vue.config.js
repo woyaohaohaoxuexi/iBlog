@@ -40,8 +40,8 @@ module.exports = {
     port: 8899,
     proxy: {
       '/ley/': {
-        // target: 'http://localhost:8090/'
-        target: 'http://192.168.5.8:8090/'  // 家里电脑
+        target: 'http://localhost:8090/'
+        // target: 'http://192.168.5.8:8090/'  // 家里电脑
       }
     }
   }
