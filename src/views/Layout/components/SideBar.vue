@@ -1,6 +1,6 @@
 <template>
   <div class='side-bar'>
-    <side-menu :data="menuData"></side-menu>
+    <side-menu :data="menuData" @change="handleChange"></side-menu>
   </div>
 </template>
 
@@ -24,8 +24,12 @@ export default {
   },
   methods: {
     init() {
-
-    }
+      
+    },
+    handleChange(val) {
+      console.log('val::ll', val);
+      
+    } 
   }
 }
 </script>

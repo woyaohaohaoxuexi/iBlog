@@ -11,7 +11,7 @@ const routes = [
     component: Layout,
     meta: {
       title: '工作台',
-      icon: 'blog-management'
+      icon: 'dashboard'
     },
     children: [
       {
@@ -51,7 +51,7 @@ const routes = [
     component: Layout,
     meta: {
       title: '标签管理',
-      icon: 'blog-management',
+      icon: 'label',
       showSubMenu: false,
       activeMenu: '/label-management/index'
     },
@@ -68,7 +68,7 @@ const routes = [
     component: Layout,
     meta: {
       title: '留言管理',
-      icon: 'blog-management',
+      icon: 'message',
       showSubMenu: false,
       activeMenu: '/message-management/index'
     },

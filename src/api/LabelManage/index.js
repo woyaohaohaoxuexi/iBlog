@@ -8,5 +8,14 @@ export default {
       method: 'post',
       data
     })
+  },
+
+  // 获取标签列表
+  query(params = {}) {
+    return request({
+      url: `/get/labels`,
+      method: 'get',
+      params
+    })
   }
 }

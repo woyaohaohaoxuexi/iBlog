@@ -16,6 +16,14 @@
           rows="10">
         </textarea>
       </div>
+      <div class="ley-flex item-form">
+        <span class="left-text">标签：</span>
+        <div class="ley-flex">
+          <select class="ley-mini-input" v-model="label" name="">
+            <option v-for="item in list" :value="item.id" :key="item.id">{{ item.name }}</option>
+          </select>
+        </div>
+      </div>
       <div class="ley-flex">
         <span class="left-text">新建方式：</span>
         <div class="ley-flex">
@@ -52,7 +60,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import { mavonEditor } from 'mavon-editor'
 import marked from 'marked'
 import 'mavon-editor/dist/css/index.css'
@@ -71,6 +79,7 @@ export default {
       error: '',
       title: '',
       introduction: '',
+      label: '',
       file: '',
       articleId: '',
       manageData: {
@@ -80,6 +89,7 @@ export default {
     }
   },
   computed: {
+    ...mapState('label', ['list']),
     manageDom() {
       const manageStr = this.manageData.article
       let dom = ''
@@ -109,13 +119,20 @@ export default {
     }
   },
   created() {
-    const aBoundary = 'WebKitFormBoundaryGc4qkdH8N2AxkJx1'
-    const reg1 = new RegExp(`^(-+${aBoundary})`)
-    console.log('正则：', reg1);
-    console.log('获取 boundary', str.match(reg1));
+    this.init()
   },
   methods: {
     ...mapActions('article', ['addArticle', 'uploadImg']),
+    ...mapActions('label', ['query', 'uploadImg']),
+    init() {
+      if (!this.list || !this.list.length) {
+        console.log('查询 label');
+        
+        this.query()
+      }
+      console.log('aaa');
+      
+    },
     upload(event) {
       const eventTarget = event.target || {}
       const files = eventTarget.files
@@ -180,6 +197,11 @@ export default {
 <style scoped lang="scss">
 .check-content {
   @include mb(20px)
+}
+.left-text {
+  width: 80px;
+  text-align: right;
+  @include mr(20px)
 }
 .item-radio {
   @include mr(15px)

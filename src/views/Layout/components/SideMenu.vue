@@ -77,6 +77,8 @@ export default {
       let currentMenuData = this.menuData[index]
       currentMenuData.extend = !currentMenuData.extend
       this.$set(this.menuData, index, currentMenuData)
+      const $emitA = this.$emit('change', currentMenuData)
+      console.log('emit  的值LL', $emitA);
     }
   }
 }
@@ -87,6 +89,10 @@ export default {
   .item-menu {
     height: 56px;
     cursor: pointer;
+    .svg-icon {
+      width: 16px;
+      height: 16px;
+    }
   }
   .parent-menu {
     position: relative;
