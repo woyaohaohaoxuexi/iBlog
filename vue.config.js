@@ -9,6 +9,7 @@ module.exports = {
       .set('@', resolve('src'))
       .set('@views', resolve('src/views'))
       .set('@api', resolve('src/api'))
+      .set('@components', resolve('src/components'))
       .set('$', resolve('node_modules'))
     
      // 取消 默认对 .svg 的解析规则 

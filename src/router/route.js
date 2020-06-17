@@ -40,10 +40,25 @@ const routes = [
       showSubMenu: false,
       activeMenu: '/article-management/index'
     },
+    children: [{
+      path: 'index',
+      component: () => import('@views/article/index')
+    }]
+  },
+  {
+    path: '/label-management',
+    redirect: '/label-management/index',
+    component: Layout,
+    meta: {
+      title: '标签管理',
+      icon: 'blog-management',
+      showSubMenu: false,
+      activeMenu: '/label-management/index'
+    },
     children: [
       {
         path: 'index',
-        component: () => import('@views/article/index')
+        component: () => import('@views/LabelManagement/index')
       }
     ]
   },

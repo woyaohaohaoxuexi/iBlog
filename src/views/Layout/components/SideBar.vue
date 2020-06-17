@@ -1,11 +1,5 @@
 <template>
   <div class='side-bar'>
-    <div class="avatar">
-      <div>
-        <p class="img-place"></p>
-      </div>
-      <p>后台管理</p>
-    </div>
     <side-menu :data="menuData"></side-menu>
   </div>
 </template>

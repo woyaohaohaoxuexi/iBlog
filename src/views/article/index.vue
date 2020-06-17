@@ -10,7 +10,7 @@
           <th>评论数</th>
           <th>操作</th>
         </tr>
-        <tr v-for="item in list">
+        <tr v-for="item in list" :key="item.updateDate">
           <td>
             <div>
               {{ item.updateDate }}

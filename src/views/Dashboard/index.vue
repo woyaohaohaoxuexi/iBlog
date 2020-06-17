@@ -1,11 +1,9 @@
 <template>
-  <div class='app-container'>
-    <h3>仪表盘</h3>
-    <div class="ley-flex"> 
-      <div 
-        v-for="item in dashboardData" 
-        :key="item.label" 
-        class="item-info ley-align-center ley-between ley-shadow">
+  <div class='app-content'>
+    <p class="ley-title ley-item-fixed">仪表盘</p>
+    <div> 
+      <div v-for="item in dashboardData" :key="item.label">
+        <div></div>
         <div>
           <svg-icon :icon-class="item.icon" class-name="info-identity"></svg-icon>
         </div>

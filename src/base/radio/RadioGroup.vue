@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ItemRadio from './ItemRadio'
+import ItemRadio from '../LeyRadio/ItemRadio'
 export default {
   name: 'RadioGroup',
   components: {

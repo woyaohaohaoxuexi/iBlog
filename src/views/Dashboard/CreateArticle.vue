@@ -1,5 +1,6 @@
 <template>
-  <div class='article app-container'>
+  <div class='article app-content'>
+    <p class="ley-title ley-item-fixed">新建文章</p>
     <div class="check-content">
       <div class="ley-flex ley-align-center item-form">
         <label for="" class="left-text">文章标题：</label>
@@ -11,7 +12,6 @@
           v-model="introduction"
           class="ley-textarea"
           name=""
-          id=""
           cols="30"
           rows="10">
         </textarea>
@@ -20,24 +20,25 @@
         <span class="left-text">新建方式：</span>
         <div class="ley-flex">
           <div class="item-radio">
-            <input v-model="createType" type="radio" name="createType" value="upload">
-            <label for="">上传</label>
+            <ley-radio v-model="createType" label="upload">上传</ley-radio>
           </div>
-          <div>
-            <input v-model="createType" type="radio" name="createType" value="edit">
-            <label for="">页面编辑</label>
+          <div class="item-radio">
+            <ley-radio v-model="createType" label="edit">页面编辑</ley-radio>
           </div>
         </div>
       </div>
     </div>
     <div v-if="createType === 'upload'" class="ley-flex ley-align-center item-form">
-      <label for="uploadInput" class="upload-label">上传文件</label>
-      <input
-        id="uploadInput" 
-        class="upload-input" 
-        type="file" 
-        multiple="false"
-        @change="upload">
+      <label for="uploadInput" class="upload-label ley-btn">
+        上传文件
+        <input
+          id="uploadInput" 
+          class="upload-input" 
+          type="file" 
+          multiple="false"
+          @change="upload">
+        </label>
+      
       <div class="ley-btn">上传图片</div>
     </div>
     <mavon-editor
@@ -48,8 +49,8 @@
       @imgAdd="onAddImg">
     </mavon-editor>
     <div class="ley-flex ley-align-center item-form btn-content">
-      <button class="ley-btn ley-button left-btn" @click="save">保存</button>
-      <button class="ley-btn ley-button">取消</button>
+      <button class="ley-btn left-btn active" @click="save">保存</button>
+      <button class="ley-btn">取消</button>
     </div>
   </div>
 </template>
@@ -60,7 +61,8 @@ import { mavonEditor } from 'mavon-editor'
 import marked from 'marked'
 import 'mavon-editor/dist/css/index.css'
 const highlight = require('highlight.js')
-
+import LeyUpload from ''
+import { str } from './test'
 import { BASE_URL } from '@api/config'
 export default {
   name: 'CreateArticle',
@@ -105,6 +107,18 @@ export default {
       return dom
     }
   },
+  watch: {
+    createType: function (n) {
+      console.log('emit:', n);
+      
+    }
+  },
+  created() {
+    const aBoundary = 'WebKitFormBoundaryGc4qkdH8N2AxkJx1'
+    const reg1 = new RegExp(`^(-+${aBoundary})`)
+    console.log('正则：', reg1);
+    console.log('获取 boundary', str.match(reg1));
+  },
   methods: {
     ...mapActions('article', ['addArticle', 'uploadImg']),
     upload(event) {
@@ -146,6 +160,8 @@ export default {
     },
 
     save() {
+      console.log('保存');
+      
       const { title, introduction, createType } = this
       if (title && introduction) {
         let file = createType === 'upload' ? this.file : this.articleValue
@@ -190,7 +206,7 @@ export default {
   margin-bottom: 20px;
 }
 .upload-input {
-  display: none;
+  opacity: 0;
 }
 
 .btn-content {
