@@ -42,7 +42,14 @@
           class="upload-input"
           type="file" 
           multiple="false"
-          @change="upload">
+          @change="uploadFile">
+      </label>
+      <label class="ley-btn">上传图片
+        <input 
+          class="upload-input"
+          type="file" 
+          multiple="false"
+          @change="uploadImage">
       </label>
     </div>
     <mavon-editor
@@ -123,7 +130,7 @@ export default {
   },
   methods: {
     ...mapActions('article', ['addArticle', 'uploadImg']),
-    ...mapActions('label', ['query', 'uploadImg']),
+    ...mapActions('label', ['query']),
     init() {
       if (!this.list || !this.list.length) {
         console.log('查询 label');
@@ -133,7 +140,7 @@ export default {
       console.log('aaa');
       
     },
-    upload(event) {
+    uploadFile(event) {
       const eventTarget = event.target || {}
       const files = eventTarget.files
       if (!files || files.length === 0) {
@@ -141,6 +148,21 @@ export default {
         return
       }
       this.file = files[0]
+    },
+    uploadImage(event) {
+      const eventTarget = event.target || {}
+      const files = eventTarget.files
+      // if (!files || files.length === 0) {
+      //   this.error = ''
+      // }  
+      console.log('文件LL', files[0]);
+      const formData = new FormData()
+      formData.append('img', files[0])
+      this.uploadImg(formData)
+        .then(res => {
+          console.log('上传图片LL', res);
+          
+        })
     },
     showSize(number) {
       let sizeText = ''
