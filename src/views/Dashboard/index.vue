@@ -9,6 +9,7 @@
           <p>20</p>
         </div>
       </div>
+      <a href="http://localhost:8090/aa.text" download="">下载文本</a>
     </div>
   </div>
 </template>
